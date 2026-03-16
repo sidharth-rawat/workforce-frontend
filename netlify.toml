@@ -1,12 +1,12 @@
 # Netlify configuration for WorkForce Pro frontend
 
 [build]
-  base    = "client"
   command = "npm run build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "20"
+  VITE_API_URL = "https://workforce-backend-ya7y.onrender.com"
 
 # Redirect all routes to index.html for React Router SPA
 [[redirects]]
