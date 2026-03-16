@@ -150,10 +150,25 @@ export default function Login() {
 
           {/* Demo credentials */}
           <div className="mt-6 rounded-xl border border-indigo-100 bg-indigo-50 p-4">
-            <p className="mb-2 text-xs font-semibold uppercase tracking-wide text-indigo-600">Demo Credentials</p>
-            <div className="space-y-1 text-xs text-indigo-700">
-              <p><span className="text-indigo-400">Email</span> &nbsp; admin@company.com</p>
-              <p><span className="text-indigo-400">Pass &nbsp;</span> Admin@123</p>
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wide text-indigo-600">Demo Credentials — click to fill</p>
+            <div className="space-y-1.5">
+              {[
+                { role: 'Admin',    email: 'admin@company.com', password: 'Admin@123' },
+                { role: 'Employee', email: 'jane@company.com',  password: 'Jane@123'  },
+                { role: 'Employee', email: 'bob@company.com',   password: 'Bob@123'   },
+                { role: 'Employee', email: 'sarah@company.com', password: 'Sarah@123' },
+              ].map((c) => (
+                <button
+                  key={c.email}
+                  type="button"
+                  onClick={() => { setEmail(c.email); setPassword(c.password) }}
+                  className="flex w-full items-center justify-between rounded-lg px-3 py-1.5 text-left text-xs transition-colors hover:bg-indigo-100"
+                >
+                  <span className="w-16 shrink-0 font-medium text-indigo-500">{c.role}</span>
+                  <span className="flex-1 truncate text-indigo-800">{c.email}</span>
+                  <span className="ml-2 shrink-0 font-mono text-indigo-400">{c.password}</span>
+                </button>
+              ))}
             </div>
           </div>
         </div>
